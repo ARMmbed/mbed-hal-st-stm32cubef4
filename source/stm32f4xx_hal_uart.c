@@ -1145,6 +1145,36 @@ HAL_StatusTypeDef HAL_UART_DMAStop(UART_HandleTypeDef *huart)
 }
 
 /**
+  * @brief Stops the DMA Rx Transfer.
+  * @param huart: UART handle
+  * @retval None
+  */
+HAL_StatusTypeDef HAL_UART_DMAStopRx(UART_HandleTypeDef *huart)
+{
+  /* Process Locked */
+  __HAL_LOCK(huart);
+  
+  /* Disable the UART Rx DMA requests */
+  /*huart->Instance->CR3 &= ~USART_CR3_DMAR;*/
+  /* Abort the UART DMA rx Stream */
+  if(huart->hdmarx != NULL)
+  {
+    HAL_DMA_Abort(huart->hdmarx);
+  }
+
+  /* Disable UART peripheral */
+  __HAL_UART_DISABLE(huart);
+
+  huart->State = HAL_UART_STATE_READY;
+  
+  /* Process Unlocked */
+  __HAL_UNLOCK(huart);
+  
+  return HAL_OK;
+}
+
+
+/**
   * @brief  This function handles UART interrupt request.
   * @param  huart: pointer to a UART_HandleTypeDef structure that contains
   *                the configuration information for the specified UART module.
