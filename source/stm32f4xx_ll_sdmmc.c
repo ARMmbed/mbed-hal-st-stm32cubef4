@@ -433,14 +433,31 @@ HAL_StatusTypeDef SDIO_DataConfig(SDIO_TypeDef *SDIOx, SDIO_DataInitTypeDef* SDI
   /* Set the SDIO DataLength value */
   SDIOx->DLEN = SDIO_DataInitStruct->DataLength;
 
+  /* SDIO DCTRL Configuration */  
+  /* Get the SDIO DCTRL value */
+  tmpreg = SDIOx->DCTRL;
+
+  /* Clear DEN, DTMODE, DTDIR and DBCKSIZE bits */
+  tmpreg &= ~DCTRL_CLEAR_MASK;
+
+  SDIOx->DCTRL = tmpreg;
+
+  /* Clock frequency >= 24MHz and compiler optimization cause DPSM not to function
+  * (STA register is not properly updated to indicate end of transfer).
+  * This is likely a delay in the reset done above, but cause is not completely found.
+  * By delaying until SDIO_DPSM_ENABLE is unset, this at least works for 24MHz, though
+  * 48MHz still hangs.
+  */
+  while ((SDIOx->DCTRL & SDIO_DPSM_ENABLE) == 1);
+
   /* Set the SDIO data configuration parameters */
   tmpreg |= (uint32_t)(SDIO_DataInitStruct->DataBlockSize |\
-                       SDIO_DataInitStruct->TransferDir   |\
-                       SDIO_DataInitStruct->TransferMode  |\
-                       SDIO_DataInitStruct->DPSM);
-  
+      SDIO_DataInitStruct->TransferDir   |\
+      SDIO_DataInitStruct->TransferMode  |\
+      SDIO_DataInitStruct->DPSM);
+
   /* Write to SDIO DCTRL */
-  MODIFY_REG(SDIOx->DCTRL, DCTRL_CLEAR_MASK, tmpreg);
+  SDIOx->DCTRL = tmpreg;
 
   return HAL_OK;
 
