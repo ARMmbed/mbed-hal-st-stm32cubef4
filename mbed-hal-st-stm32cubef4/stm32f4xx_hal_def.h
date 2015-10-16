@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f4xx_hal_def.h
   * @author  MCD Application Team
-  * @version V1.3.0
-  * @date    09-March-2015
+  * @version V1.4.0
+  * @date    14-August-2015
   * @brief   This file contains HAL common defines, enumeration, macros and 
   *          structures definitions. 
   ******************************************************************************
@@ -46,7 +46,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx.h"
-#include "stm32_hal_legacy.h"
+#include "Legacy/stm32_hal_legacy.h"
 #include <stdio.h>
 
 /* Exported types ------------------------------------------------------------*/
@@ -72,9 +72,6 @@ typedef enum
 } HAL_LockTypeDef;
 
 /* Exported macro ------------------------------------------------------------*/
-//#ifndef NULL
-  #define HAL_NULL      (void *) 0
-//#endif
 #define HAL_MAX_DELAY      0xFFFFFFFF
 
 #define HAL_IS_BIT_SET(REG, BIT)         (((REG) & (BIT)) != RESET)
