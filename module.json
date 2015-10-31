@@ -1,6 +1,6 @@
 {
   "name": "mbed-hal-st-stm32cubef4",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "STM32Cube HAL for STM32F4 microcontrollers",
   "keywords": [],
   "author": "",
@@ -15,7 +15,7 @@
     "mbed-hal-st-stm32cubef4"
   ],
   "dependencies": {
-    "mbed-hal-st-stm32f4": "~0.5.0"
+    "mbed-hal-st-stm32f4": "^1.0.0"
   },
   "targetDependencies": {}
 }
