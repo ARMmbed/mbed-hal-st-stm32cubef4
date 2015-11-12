@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f4xx_hal_pwr.h
   * @author  MCD Application Team
-  * @version V1.3.2
-  * @date    26-June-2015
+  * @version V1.4.1
+  * @date    09-October-2015
   * @brief   Header file of PWR HAL module.
   ******************************************************************************
   * @attention
@@ -85,7 +85,6 @@ typedef struct
   * @{
   */
 #define PWR_WAKEUP_PIN1                 ((uint32_t)0x00000100)
-#define PWR_WAKEUP_PIN2                 ((uint32_t)0x00000080)
 /**
   * @}
   */
@@ -169,7 +168,7 @@ typedef struct
   * @{
   */
 
-#if defined(STM32F405xx) || defined(STM32F407xx) || defined(STM32F415xx) || defined(STM32F417xx)
+#if defined(STM32F405xx) || defined(STM32F407xx) || defined(STM32F415xx) || defined(STM32F17xx)   
 /** @brief  macros configure the main internal regulator output voltage.
   * @param  __REGULATOR__: specifies the regulator output voltage to achieve
   *         a tradeoff between performance and power consumption when the device does
@@ -445,7 +444,6 @@ void HAL_PWR_DisableSEVOnPend(void);
 /** @defgroup PWR_IS_PWR_Definitions PWR Private macros to check input parameters
   * @{
   */
-#define IS_PWR_WAKEUP_PIN(PIN) (((PIN) == PWR_WAKEUP_PIN1) || ((PIN) == PWR_WAKEUP_PIN2))
 #define IS_PWR_PVD_LEVEL(LEVEL) (((LEVEL) == PWR_PVDLEVEL_0) || ((LEVEL) == PWR_PVDLEVEL_1)|| \
                                  ((LEVEL) == PWR_PVDLEVEL_2) || ((LEVEL) == PWR_PVDLEVEL_3)|| \
                                  ((LEVEL) == PWR_PVDLEVEL_4) || ((LEVEL) == PWR_PVDLEVEL_5)|| \

@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f4xx_hal_hash.h
   * @author  MCD Application Team
-  * @version V1.3.2
-  * @date    26-June-2015
+  * @version V1.4.1
+  * @date    09-October-2015
   * @brief   Header file of HASH HAL module.
   ******************************************************************************
   * @attention
@@ -43,7 +43,7 @@
  extern "C" {
 #endif
 
-#if defined(STM32F415xx) || defined(STM32F417xx) || defined(STM32F437xx) || defined(STM32F439xx)
+#if defined(STM32F415xx) || defined(STM32F417xx) || defined(STM32F437xx) || defined(STM32F439xx) || defined(STM32F479xx)
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal_def.h"
@@ -241,8 +241,8 @@ typedef struct
   *            @arg HASH_FLAG_DINNE: DIN not empty : The input buffer contains at least one word of data
   * @retval The new state of __FLAG__ (TRUE or FALSE).
   */
-#define __HAL_HASH_GET_FLAG(__FLAG__) (((__FLAG__) > 8U) ? ((HASH->CR & (__FLAG__)) == (__FLAG__)) :\
-                                                           ((HASH->SR & (__FLAG__)) == (__FLAG__)))
+#define __HAL_HASH_GET_FLAG(__FLAG__) ((HASH->SR & (__FLAG__)) == (__FLAG__))
+
 /**
   * @brief  Enable the multiple DMA mode. 
   *         This feature is available only in STM32F429x and STM32F439x devices.
@@ -431,7 +431,7 @@ void HAL_HASH_ErrorCallback(HASH_HandleTypeDef *hhash);
   * @}
   */
  
-#endif /* STM32F415xx || STM32F417xx || STM32F437xx || STM32F439xx */
+#endif /* STM32F415xx || STM32F417xx || STM32F437xx || STM32F439xx || STM32F479xx */
 /**
   * @}
   */ 

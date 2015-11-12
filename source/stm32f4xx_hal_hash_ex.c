@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f4xx_hal_hash_ex.c
   * @author  MCD Application Team
-  * @version V1.3.2
-  * @date    26-June-2015
+  * @version V1.4.1
+  * @date    09-October-2015
   * @brief   HASH HAL Extension module driver.
   *          This file provides firmware functions to manage the following 
   *          functionalities of HASH peripheral:
@@ -106,7 +106,7 @@
 
 #ifdef HAL_HASH_MODULE_ENABLED
 
-#if defined(STM32F437xx) || defined(STM32F439xx)
+#if defined(STM32F437xx) || defined(STM32F439xx) || defined(STM32F479xx)
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -944,7 +944,6 @@ HAL_StatusTypeDef HAL_HASHEx_SHA224_Start_IT(HASH_HandleTypeDef *hhash, uint8_t 
          the message digest of a new message */
       HASH->CR |= HASH_CR_INIT;
     }
-    
     /* Reset interrupt counter */
     hhash->HashITCounter = 0;
     
@@ -1045,10 +1044,10 @@ HAL_StatusTypeDef HAL_HASHEx_SHA224_Start_IT(HASH_HandleTypeDef *hhash, uint8_t 
       __HAL_HASH_START_DIGEST();
       /* Reset buffer counter */
       hhash->HashInCount = 0;
-
-     /* Call Input data transfer complete callback */
-     HAL_HASH_InCpltCallback(hhash);
     }
+    /* Call Input data transfer complete callback */
+    HAL_HASH_InCpltCallback(hhash);
+  }
   }
   
   /* Process Unlocked */
@@ -1097,7 +1096,6 @@ HAL_StatusTypeDef HAL_HASHEx_SHA256_Start_IT(HASH_HandleTypeDef *hhash, uint8_t 
          the message digest of a new message */
       HASH->CR |= HASH_CR_INIT;
     }
-    
     /* Reset interrupt counter */
     hhash->HashITCounter = 0;
     
@@ -1147,7 +1145,7 @@ HAL_StatusTypeDef HAL_HASHEx_SHA256_Start_IT(HASH_HandleTypeDef *hhash, uint8_t 
       if(hhash->HashITCounter == 0)
       {
         HASH->DIN = *(uint32_t*)inputaddr;
-
+        
         if(hhash->HashInCount >= 68)
         {
           /* Decrement buffer counter */
@@ -1198,10 +1196,10 @@ HAL_StatusTypeDef HAL_HASHEx_SHA256_Start_IT(HASH_HandleTypeDef *hhash, uint8_t 
       __HAL_HASH_START_DIGEST();
       /* Reset buffer counter */
       hhash->HashInCount = 0;
-
-     /* Call Input data transfer complete callback */
-     HAL_HASH_InCpltCallback(hhash);
     }
+    /* Call Input data transfer complete callback */
+    HAL_HASH_InCpltCallback(hhash);
+  }
   }
   
   /* Process Unlocked */
@@ -1628,7 +1626,7 @@ HAL_StatusTypeDef HAL_HMACEx_SHA256_Start_DMA(HASH_HandleTypeDef *hhash, uint8_t
 /**
   * @}
   */
-#endif /* STM32F437xx || STM32F439xx */
+#endif /* STM32F437xx || STM32F439xx || STM32F479xx */
 
 #endif /* HAL_HASH_MODULE_ENABLED */
 /**

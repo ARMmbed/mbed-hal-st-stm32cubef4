@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f4xx_hal_rtc_ex.h
   * @author  MCD Application Team
-  * @version V1.3.2
-  * @date    26-June-2015
+  * @version V1.4.1
+  * @date    09-October-2015
   * @brief   Header file of RTC HAL Extension module.
   ******************************************************************************
   * @attention
@@ -68,7 +68,7 @@ typedef struct
                                              This parameter can be a value of @ref  RTCEx_Tamper_Pins_Definitions */
   
   uint32_t PinSelection;                /*!< Specifies the Tamper Pin.
-                                             This parameter can be a value of @ref  RTCEx_Tamper_Pins_Selection */
+                                             This parameter can be a value of @ref  RTCEx_Tamper_Pins_Selection */                                        
                                              
   uint32_t Trigger;                     /*!< Specifies the Tamper Trigger.
                                              This parameter can be a value of @ref  RTCEx_Tamper_Trigger_Definitions */
@@ -145,9 +145,12 @@ typedef struct
 /** @defgroup RTCEx_Tamper_Pins_Selection RTC tamper Pins Selection
   * @{
   */ 
-#define RTC_TAMPERPIN_DEFAULT               ((uint32_t)0x00000000)
-#define RTC_TAMPERPIN_POS1                  ((uint32_t)0x00010000)
-
+#define RTC_TAMPERPIN_PC13                 ((uint32_t)0x00000000)
+#if defined (STM32F446xx)
+ #define RTC_TAMPERPIN_PA0                  ((uint32_t)0x00010000)
+#else
+ #define RTC_TAMPERPIN_PI8                  ((uint32_t)0x00010000)
+#endif /* STM32F446xx */
 /**
   * @}
   */ 
@@ -155,9 +158,12 @@ typedef struct
 /** @defgroup RTCEx_TimeStamp_Pin_Selection RTC TimeStamp Pins Selection
   * @{
   */ 
-#define RTC_TIMESTAMPPIN_DEFAULT            ((uint32_t)0x00000000)
-#define RTC_TIMESTAMPPIN_POS1               ((uint32_t)0x00020000)
-
+#define RTC_TIMESTAMPPIN_PC13              ((uint32_t)0x00000000)
+#if defined (STM32F446xx)
+ #define RTC_TIMESTAMPPIN_PA0               ((uint32_t)0x00020000)
+#else
+ #define RTC_TIMESTAMPPIN_PI8               ((uint32_t)0x00020000)
+#endif /* STM32F446xx */
 /**
   * @}
   */ 
@@ -397,7 +403,7 @@ typedef struct
   *            @arg RTC_FLAG_WUTF   
   * @retval None
   */
-#define __HAL_RTC_WAKEUPTIMER_CLEAR_FLAG(__HANDLE__, __FLAG__)            ((__HANDLE__)->Instance->ISR) = (~((__FLAG__) | RTC_ISR_INIT)|((__HANDLE__)->Instance->ISR & RTC_ISR_INIT))  
+#define __HAL_RTC_WAKEUPTIMER_CLEAR_FLAG(__HANDLE__, __FLAG__)            ((__HANDLE__)->Instance->ISR) = (~((__FLAG__) | RTC_ISR_INIT)|((__HANDLE__)->Instance->ISR & RTC_ISR_INIT)) 
 
 /**
   * @brief  Enable interrupt on the RTC Wake-up Timer associated Exti line.
@@ -924,7 +930,7 @@ HAL_StatusTypeDef HAL_RTCEx_PollForAlarmBEvent(RTC_HandleTypeDef *hrtc, uint32_t
 
 #define IS_RTC_TIMESTAMP_PIN(PIN) (((PIN) == RTC_TIMESTAMPPIN_DEFAULT) || \
                                    ((PIN) == RTC_TIMESTAMPPIN_POS1))
-
+ 
 #define IS_RTC_TAMPER_TRIGGER(TRIGGER) (((TRIGGER) == RTC_TAMPERTRIGGER_RISINGEDGE) || \
                                         ((TRIGGER) == RTC_TAMPERTRIGGER_FALLINGEDGE) || \
                                         ((TRIGGER) == RTC_TAMPERTRIGGER_LOWLEVEL) || \
