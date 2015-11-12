@@ -187,7 +187,7 @@ typedef struct
   */
 /**
   * @brief  Set the FLASH Latency.
-  * @param  __LATENCY__: FLASH Latency                   
+  * @param  __LATENCY__: FLASH Latency
   *         The value of this parameter depend on device used within the same series
   * @retval none
   */ 

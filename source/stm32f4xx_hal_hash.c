@@ -177,7 +177,7 @@ static void HASH_DMAXferCplt(DMA_HandleTypeDef *hdma)
       }
       /* Configure the number of valid bits in last word of the message */
       MODIFY_REG(HASH->STR, HASH_STR_NBLW, 8 * (buffersize % 4));
-      
+            
       /* Set the HASH DMA transfer complete */
       hhash->hdmain->XferCpltCallback = HASH_DMAXferCplt;
       
@@ -719,6 +719,9 @@ HAL_StatusTypeDef HAL_HASH_SHA1_Start(HASH_HandleTypeDef *hhash, uint8_t *pInBuf
   */
 HAL_StatusTypeDef HAL_HASH_SHA1_Accumulate(HASH_HandleTypeDef *hhash, uint8_t *pInBuffer, uint32_t Size)
 {
+  /* Check the parameters */
+  assert_param(IS_HASH_SHA1_BUFFER_SIZE(Size));
+
   /* Process Locked */
   __HAL_LOCK(hhash);
   
@@ -919,10 +922,9 @@ HAL_StatusTypeDef HAL_HASH_MD5_Start_IT(HASH_HandleTypeDef *hhash, uint8_t *pInB
       __HAL_HASH_START_DIGEST();
       /* Reset buffer counter */
       hhash->HashInCount = 0;
+      /* Call Input data transfer complete callback */
+      HAL_HASH_InCpltCallback(hhash);
     }
-    /* Call Input data transfer complete callback */
-    HAL_HASH_InCpltCallback(hhash);
-  }
   }
   
   /* Process Unlocked */
@@ -1079,10 +1081,9 @@ HAL_StatusTypeDef HAL_HASH_SHA1_Start_IT(HASH_HandleTypeDef *hhash, uint8_t *pIn
       __HAL_HASH_START_DIGEST();
       /* Reset buffer counter */
       hhash->HashInCount = 0;
+      /* Call Input data transfer complete callback */
+      HAL_HASH_InCpltCallback(hhash);
     }
-    /* Call Input data transfer complete callback */
-    HAL_HASH_InCpltCallback(hhash);
-  }
   }
   
   /* Process Unlocked */

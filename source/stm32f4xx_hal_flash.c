@@ -178,10 +178,10 @@ HAL_StatusTypeDef HAL_FLASH_Program(uint32_t TypeProgram, uint32_t Address, uint
   
   /* Process Locked */
   __HAL_LOCK(&pFlash);
-
+  
   /* Check the parameters */
   assert_param(IS_FLASH_TYPEPROGRAM(TypeProgram));
-
+  
   /* Wait for last operation to be completed */
   status = FLASH_WaitForLastOperation((uint32_t)FLASH_TIMEOUT_VALUE);
   
@@ -190,7 +190,7 @@ HAL_StatusTypeDef HAL_FLASH_Program(uint32_t TypeProgram, uint32_t Address, uint
     if(TypeProgram == FLASH_TYPEPROGRAM_BYTE)
     {
       /*Program byte (8-bit) at a specified address.*/
-        FLASH_Program_Byte(Address, (uint8_t) Data);
+      FLASH_Program_Byte(Address, (uint8_t) Data);
     }
     else if(TypeProgram == FLASH_TYPEPROGRAM_HALFWORD)
     {
@@ -207,17 +207,17 @@ HAL_StatusTypeDef HAL_FLASH_Program(uint32_t TypeProgram, uint32_t Address, uint
       /*Program double word (64-bit) at a specified address.*/
       FLASH_Program_DoubleWord(Address, Data);
     }
-
+    
     /* Wait for last operation to be completed */
     status = FLASH_WaitForLastOperation((uint32_t)FLASH_TIMEOUT_VALUE);
     
     /* If the program operation is completed, disable the PG Bit */
-    FLASH->CR &= (~FLASH_CR_PG);
+    FLASH->CR &= (~FLASH_CR_PG);  
   }
-
+  
   /* Process Unlocked */
   __HAL_UNLOCK(&pFlash);
-
+  
   return status;
 }
 
@@ -245,7 +245,7 @@ HAL_StatusTypeDef HAL_FLASH_Program_IT(uint32_t TypeProgram, uint32_t Address, u
   
   /* Enable Error source interrupt */
   __HAL_FLASH_ENABLE_IT(FLASH_IT_ERR);
-  
+
   pFlash.ProcedureOnGoing = FLASH_PROC_PROGRAM;
   pFlash.Address = Address;
 
@@ -301,17 +301,17 @@ void HAL_FLASH_IRQHandler(void)
       /*return the faulty address*/
       addresstmp = pFlash.Address;
     }
-
+    
     /*Save the Error code*/
     FLASH_SetErrorCode();
-
+    
     /* FLASH error interrupt user callback */
     HAL_FLASH_OperationErrorCallback(addresstmp);
     
     /*Stop the procedure ongoing*/
     pFlash.ProcedureOnGoing = FLASH_PROC_NONE;
   }
-
+  
   /* Check FLASH End of Operation flag  */
   if(__HAL_FLASH_GET_FLAG(FLASH_FLAG_EOP) != RESET)
   {
@@ -322,14 +322,14 @@ void HAL_FLASH_IRQHandler(void)
     {
       /*Nb of sector to erased can be decreased*/
       pFlash.NbSectorsToErase--;
-
+      
       /* Check if there are still sectors to erase*/
       if(pFlash.NbSectorsToErase != 0)
       {
         addresstmp = pFlash.Sector;
         /*Indicate user which sector has been erased*/
         HAL_FLASH_EndOfOperationCallback(addresstmp);
-
+        
         /*Increment sector number*/
         pFlash.Sector++;
         addresstmp = pFlash.Sector;
@@ -353,7 +353,7 @@ void HAL_FLASH_IRQHandler(void)
     {
       if(pFlash.ProcedureOnGoing == FLASH_PROC_MASSERASE) 
       {
-        /*MassErase ended. Return the selected bank*/
+        /* MassErase ended. Return the selected bank */
         /* Flush the caches to be sure of the data consistency */
         FLASH_FlushCaches() ;
 
@@ -374,13 +374,13 @@ void HAL_FLASH_IRQHandler(void)
   {
     /* Operation is completed, disable the PG, SER, SNB and MER Bits */
     CLEAR_BIT(FLASH->CR, (FLASH_CR_PG | FLASH_CR_SER | FLASH_CR_SNB | FLASH_MER_BIT));
-    
+
     /* Disable End of FLASH Operation interrupt */
     __HAL_FLASH_DISABLE_IT(FLASH_IT_EOP);
-
+    
     /* Disable Error source interrupt */
     __HAL_FLASH_DISABLE_IT(FLASH_IT_ERR);
-
+    
     /* Process Unlocked */
     __HAL_UNLOCK(&pFlash);
   }
@@ -578,7 +578,7 @@ HAL_StatusTypeDef FLASH_WaitForLastOperation(uint32_t Timeout)
       }
     } 
   }
-  
+
   /* Check FLASH End of Operation flag  */
   if (__HAL_FLASH_GET_FLAG(FLASH_FLAG_EOP))
   {

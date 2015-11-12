@@ -112,7 +112,7 @@ typedef struct
                                  This parameter must be a number between Min_Data = 0 and Max_Data = 59 */
 
   uint8_t TimeFormat;       /*!< Specifies the RTC AM/PM Time.
-                                 This parameter can be a value of @ref RTC_AM_PM_Definitions */ 
+                                 This parameter can be a value of @ref RTC_AM_PM_Definitions */
   
   uint32_t SubSeconds;     /*!< Specifies the RTC_SSR RTC Sub Second register content.
                                  This parameter corresponds to a time unit range between [0-1] Second

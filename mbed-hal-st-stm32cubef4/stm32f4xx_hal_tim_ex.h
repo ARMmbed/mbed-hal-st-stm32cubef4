@@ -136,8 +136,8 @@ typedef struct
 #endif /* STM32F446xx */
 /**
   * @}
-  */   
- 
+  */
+
 #if defined(STM32F410Tx) || defined(STM32F410Cx) || defined(STM32F410Rx) 
 /** @defgroup TIMEx_SystemBreakInput  TIM System Break Input
   * @{
@@ -147,9 +147,9 @@ typedef struct
 #define TIM_SYSTEMBREAKINPUT_HARDFAULT_PVD ((uint32_t)0x00000005) /* Core Lockup lock output(Hardfault) and PVD Interrupt are connected to Break Input of TIM1 and TIM8 */   
 /**
   * @}
-  */ 
+  */
 #endif /* STM32F410Tx || STM32F410Cx || STM32F410Rx */
-    
+
 /**
   * @}
   */ 

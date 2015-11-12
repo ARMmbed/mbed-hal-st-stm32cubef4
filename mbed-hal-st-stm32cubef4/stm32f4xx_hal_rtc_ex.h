@@ -145,12 +145,8 @@ typedef struct
 /** @defgroup RTCEx_Tamper_Pins_Selection RTC tamper Pins Selection
   * @{
   */ 
-#define RTC_TAMPERPIN_PC13                 ((uint32_t)0x00000000)
-#if defined (STM32F446xx)
- #define RTC_TAMPERPIN_PA0                  ((uint32_t)0x00010000)
-#else
- #define RTC_TAMPERPIN_PI8                  ((uint32_t)0x00010000)
-#endif /* STM32F446xx */
+#define RTC_TAMPERPIN_DEFAULT               ((uint32_t)0x00000000)
+#define RTC_TAMPERPIN_POS1                  ((uint32_t)0x00010000)
 /**
   * @}
   */ 
@@ -158,12 +154,8 @@ typedef struct
 /** @defgroup RTCEx_TimeStamp_Pin_Selection RTC TimeStamp Pins Selection
   * @{
   */ 
-#define RTC_TIMESTAMPPIN_PC13              ((uint32_t)0x00000000)
-#if defined (STM32F446xx)
- #define RTC_TIMESTAMPPIN_PA0               ((uint32_t)0x00020000)
-#else
- #define RTC_TIMESTAMPPIN_PI8               ((uint32_t)0x00020000)
-#endif /* STM32F446xx */
+#define RTC_TIMESTAMPPIN_DEFAULT            ((uint32_t)0x00000000)
+#define RTC_TIMESTAMPPIN_POS1               ((uint32_t)0x00020000)
 /**
   * @}
   */ 
@@ -927,7 +919,7 @@ HAL_StatusTypeDef HAL_RTCEx_PollForAlarmBEvent(RTC_HandleTypeDef *hrtc, uint32_t
 
 #define IS_RTC_TAMPER_PIN(PIN) (((PIN) == RTC_TAMPERPIN_DEFAULT) || \
                                 ((PIN) == RTC_TAMPERPIN_POS1))
-
+                                
 #define IS_RTC_TIMESTAMP_PIN(PIN) (((PIN) == RTC_TIMESTAMPPIN_DEFAULT) || \
                                    ((PIN) == RTC_TIMESTAMPPIN_POS1))
  

@@ -455,7 +455,7 @@ void HAL_I2S_ErrorCallback(I2S_HandleTypeDef *hi2s);
 
 #define IS_I2S_CPOL(CPOL) (((CPOL) == I2S_CPOL_LOW) || \
                            ((CPOL) == I2S_CPOL_HIGH))
-                                                              
+ 
 /**
   * @}
   */

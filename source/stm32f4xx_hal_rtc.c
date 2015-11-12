@@ -552,7 +552,7 @@ HAL_StatusTypeDef HAL_RTC_SetTime(RTC_HandleTypeDef *hrtc, RTC_TimeTypeDef *sTim
   *        Second fraction ratio * time_unit= [(SecondFraction-SubSeconds)/(SecondFraction+1)] * time_unit
   *        This conversion can be performed only if no shift operation is pending (ie. SHFP=0) when PREDIV_S >= SS
   * @note You must call HAL_RTC_GetDate() after HAL_RTC_GetTime() to unlock the values 
-  * in the higher-order calendar shadow registers to ensure consistency between the time and date values.
+  *        in the higher-order calendar shadow registers to ensure consistency between the time and date values.
   *        Reading RTC current time locks the values in calendar shadow registers until current date is read.
   * @retval HAL status
   */

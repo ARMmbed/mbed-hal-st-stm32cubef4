@@ -58,7 +58,7 @@
     defined(STM32F446xx) || defined(STM32F469xx) || defined(STM32F479xx)
 
 /* Exported types ------------------------------------------------------------*/
-/* Exported constants --------------------------------------------------------*/    
+/* Exported constants --------------------------------------------------------*/   
 /* Exported functions --------------------------------------------------------*/
 /** @addtogroup SAIEx_Exported_Functions
   * @{
@@ -69,7 +69,7 @@
   */
 
 /* Extended features functions ************************************************/
-void SAI_BlockSynchroConfig(SAI_HandleTypeDef *hsai);    
+void SAI_BlockSynchroConfig(SAI_HandleTypeDef *hsai);
 uint32_t SAI_GetInputClock(SAI_HandleTypeDef *hsai);
 /**
   * @}

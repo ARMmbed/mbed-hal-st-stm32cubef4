@@ -680,13 +680,13 @@ HAL_StatusTypeDef HAL_ADCEx_InjectedConfigChannel(ADC_HandleTypeDef* hadc, ADC_I
   /*       software start.                                                  */ 
   if(sConfigInjected->ExternalTrigInjecConv != ADC_INJECTED_SOFTWARE_START)
   {  
-  /* Select external trigger to start conversion */
-  hadc->Instance->CR2 &= ~(ADC_CR2_JEXTSEL);
-  hadc->Instance->CR2 |=  sConfigInjected->ExternalTrigInjecConv;
-  
-  /* Select external trigger polarity */
-  hadc->Instance->CR2 &= ~(ADC_CR2_JEXTEN);
-  hadc->Instance->CR2 |= sConfigInjected->ExternalTrigInjecConvEdge;
+    /* Select external trigger to start conversion */
+    hadc->Instance->CR2 &= ~(ADC_CR2_JEXTSEL);
+    hadc->Instance->CR2 |=  sConfigInjected->ExternalTrigInjecConv;
+    
+    /* Select external trigger polarity */
+    hadc->Instance->CR2 &= ~(ADC_CR2_JEXTEN);
+    hadc->Instance->CR2 |= sConfigInjected->ExternalTrigInjecConvEdge;
   }
   else
   {

@@ -62,10 +62,10 @@
   * @{
   */ 
 
-#if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx) ||\
-    defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) ||\
+#if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx) || \
+    defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) || \
 	defined(STM32F446xx) || defined(STM32F469xx) || defined(STM32F479xx)
-    
+
 /* Exported typedef ----------------------------------------------------------*/
 /* Exported types ------------------------------------------------------------*/
 /** @defgroup NAND_Exported_Types NAND Exported Types
@@ -276,7 +276,7 @@ uint32_t              HAL_NAND_Read_Status(NAND_HandleTypeDef *hnand);
 /**
   * @brief  NAND memory address computation.
   * @param  __ADDRESS__: NAND memory address.
-  * @param  __HANDLE__ : NAND handle.
+  * @param  __HANDLE__: NAND handle.
   * @retval NAND Raw address value
   */
 #define ARRAY_ADDRESS(__ADDRESS__ , __HANDLE__) ((__ADDRESS__)->Page + \

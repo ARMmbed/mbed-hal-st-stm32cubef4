@@ -156,7 +156,7 @@ typedef enum
 /** @defgroup GPIO_speed_define  GPIO speed define
   * @brief GPIO Output Maximum frequency
   * @{
-  */  
+  */
 #define  GPIO_SPEED_FREQ_LOW         ((uint32_t)0x00000000)  /*!< IO works at 2 MHz, please refer to the product datasheet */
 #define  GPIO_SPEED_FREQ_MEDIUM      ((uint32_t)0x00000001)  /*!< range 12,5 MHz to 50 MHz, please refer to the product datasheet */
 #define  GPIO_SPEED_FREQ_HIGH        ((uint32_t)0x00000002)  /*!< range 25 MHz to 100 MHz, please refer to the product datasheet  */

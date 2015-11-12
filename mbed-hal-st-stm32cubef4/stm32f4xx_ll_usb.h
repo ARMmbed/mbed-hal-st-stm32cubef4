@@ -128,7 +128,7 @@ typedef struct
   uint32_t low_power_enable;     /*!< Enable or disable the low power mode.                                  */
   
   uint32_t lpm_enable;           /*!< Enable or disable Link Power Management.                               */
-                          
+
   uint32_t battery_charging_enable; /*!< Enable or disable Battery charging.                                 */
                           
   uint32_t vbus_sensing_enable;  /*!< Enable or disable the VBUS Sensing feature.                            */ 

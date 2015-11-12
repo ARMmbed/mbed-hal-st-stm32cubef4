@@ -470,7 +470,7 @@ __STATIC_INLINE void HAL_MPU_Enable(uint32_t MPU_Control)
 
 /**
   * @}
-  */ 
+  */
 
 /**
   * @}

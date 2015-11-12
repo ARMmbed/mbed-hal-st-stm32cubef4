@@ -1311,31 +1311,31 @@ if(hqspi->State == HAL_QSPI_STATE_READY)
     /* Wait till BUSY flag reset */
     status = QSPI_WaitFlagStateUntilTimeout(hqspi, QSPI_FLAG_BUSY, RESET, hqspi->Timeout);
     
-  if (status == HAL_OK)
-  {
-    /* Configure QSPI: PSMAR register with the status match value */
-    WRITE_REG(hqspi->Instance->PSMAR, cfg->Match);
+    if (status == HAL_OK)
+    {
+      /* Configure QSPI: PSMAR register with the status match value */
+      WRITE_REG(hqspi->Instance->PSMAR, cfg->Match);
     
-    /* Configure QSPI: PSMKR register with the status mask value */
-    WRITE_REG(hqspi->Instance->PSMKR, cfg->Mask);
+      /* Configure QSPI: PSMKR register with the status mask value */
+      WRITE_REG(hqspi->Instance->PSMKR, cfg->Mask);
     
-    /* Configure QSPI: PIR register with the interval value */
-    WRITE_REG(hqspi->Instance->PIR, cfg->Interval);
+      /* Configure QSPI: PIR register with the interval value */
+      WRITE_REG(hqspi->Instance->PIR, cfg->Interval);
     
-    /* Configure QSPI: CR register with Match mode and Automatic stop mode */
-    MODIFY_REG(hqspi->Instance->CR, (QUADSPI_CR_PMM | QUADSPI_CR_APMS), 
+      /* Configure QSPI: CR register with Match mode and Automatic stop mode */
+      MODIFY_REG(hqspi->Instance->CR, (QUADSPI_CR_PMM | QUADSPI_CR_APMS), 
                (cfg->MatchMode | cfg->AutomaticStop));
-
+            
       /* Clear interrupt */
       __HAL_QSPI_CLEAR_FLAG(hqspi, QSPI_FLAG_TE | QSPI_FLAG_SM);
 
       /* Enable the QSPI Transfer Error and status match Interrupt */
       __HAL_QSPI_ENABLE_IT(hqspi, (QSPI_IT_SM | QSPI_IT_TE));
     
-    /* Call the configuration function */
-    cmd->NbData = cfg->StatusBytesSize;
-    QSPI_Config(hqspi, cmd, QSPI_FUNCTIONAL_MODE_AUTO_POLLING);
-        }
+      /* Call the configuration function */
+      cmd->NbData = cfg->StatusBytesSize;
+      QSPI_Config(hqspi, cmd, QSPI_FUNCTIONAL_MODE_AUTO_POLLING);
+    }
   }
   else
   {

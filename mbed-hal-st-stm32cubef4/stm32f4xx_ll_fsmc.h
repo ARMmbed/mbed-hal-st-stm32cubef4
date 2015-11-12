@@ -54,7 +54,7 @@
   * @{
   */
 
-#if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx)
+#if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx) 
 /* Private types -------------------------------------------------------------*/
 /** @defgroup FSMC_LL_Private_Types FSMC Private Types
   * @{
@@ -470,7 +470,7 @@ typedef struct
   * @}
   */  
 #endif /* STM32F405xx || STM32F415xx || STM32F407xx || STM32F417xx */
-   
+
 /** @defgroup FSMC_LL_Interrupt_definition FSMC Interrupt definition
   * @{
   */  
@@ -565,7 +565,7 @@ typedef struct
 #endif /* STM32F405xx || STM32F415xx || STM32F407xx || STM32F417xx */
 
 #define FMC_NORSRAM_DEVICE                    FSMC_NORSRAM_DEVICE            
-#define FMC_NORSRAM_EXTENDED_DEVICE           FSMC_NORSRAM_EXTENDED_DEVICE   
+#define FMC_NORSRAM_EXTENDED_DEVICE           FSMC_NORSRAM_EXTENDED_DEVICE  
 #if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx)
 #define FMC_NAND_DEVICE                       FSMC_NAND_DEVICE             
 #define FMC_PCCARD_DEVICE                     FSMC_PCCARD_DEVICE 
@@ -977,7 +977,7 @@ HAL_StatusTypeDef  FSMC_PCCARD_DeInit(FSMC_PCCARD_TypeDef *Device);
 /**
   * @}
   */
-#endif /* STM32F405xx || STM32F415xx || STM32F407xx || STM32F417xx */
+#endif /* STM32F405xx || STM32F415xx || STM32F407xx || STM32F417xx  */
 
 /**
   * @}

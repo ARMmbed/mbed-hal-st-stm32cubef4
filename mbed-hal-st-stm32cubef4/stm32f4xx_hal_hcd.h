@@ -179,7 +179,8 @@ void                HAL_HCD_MspDeInit(HCD_HandleTypeDef *hhcd);
   * @}
   */
 
-/** @defgroup HCD_Exported_Functions_Group2 IO operation functions
+/* I/O operation functions  ***************************************************/
+/** @addtogroup HCD_Exported_Functions_Group2 Input and Output operation functions
   * @{
   */
 HAL_StatusTypeDef   HAL_HCD_HC_SubmitRequest(HCD_HandleTypeDef *hhcd,
@@ -244,7 +245,7 @@ uint32_t            HAL_HCD_GetCurrentSpeed(HCD_HandleTypeDef *hhcd);
     defined(STM32F479xx)
  #define IS_HCD_ALL_INSTANCE(INSTANCE) (((INSTANCE) == USB_OTG_FS) || \
                                         ((INSTANCE) == USB_OTG_HS))
-#elif defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F411xE)
+#elif defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F411xE) 
  #define IS_HCD_ALL_INSTANCE(INSTANCE) (((INSTANCE) == USB_OTG_FS))
 #endif
 /**
@@ -255,23 +256,13 @@ uint32_t            HAL_HCD_GetCurrentSpeed(HCD_HandleTypeDef *hhcd);
   * @}
   */
 
-/* Private functions prototypes ----------------------------------------------*/
-/** @defgroup HCD_Private_Functions_Prototypes HCD Private Functions Prototypes
-  * @{
-  */
-
 /**
   * @}
   */
 
-/* Private functions ---------------------------------------------------------*/
-/** @defgroup HCD_Private_Functions HCD Private Functions
-  * @{
-  */
-
 /**
   * @}
-  */
+  */ 
 #endif /* STM32F405xx || STM32F415xx || STM32F407xx || STM32F417xx || STM32F427xx || STM32F437xx || STM32F429xx || STM32F439xx ||
           STM32F401xC || STM32F401xE || STM32F411xE || STM32F446xx || STM32F469xx || STM32F479xx  */
 #ifdef __cplusplus

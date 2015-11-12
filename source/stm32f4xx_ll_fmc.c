@@ -1635,16 +1635,16 @@ HAL_StatusTypeDef FMC_SDRAM_SendCommand(FMC_SDRAM_TypeDef *Device, FMC_SDRAM_Com
       {
         return HAL_TIMEOUT;
       }
-    }     
+    }
   }
-  
-  return HAL_OK;  
+
+  return HAL_OK;
 }
 
 /**
   * @brief  Program the SDRAM Memory Refresh rate.
   * @param  Device: Pointer to SDRAM device instance  
-  * @param  RefreshRate: The SDRAM refresh rate value.       
+  * @param  RefreshRate: The SDRAM refresh rate value.
   * @retval HAL state
   */
 HAL_StatusTypeDef FMC_SDRAM_ProgramRefreshRate(FMC_SDRAM_TypeDef *Device, uint32_t RefreshRate)

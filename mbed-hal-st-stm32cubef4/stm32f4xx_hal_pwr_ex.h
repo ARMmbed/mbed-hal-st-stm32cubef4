@@ -110,7 +110,7 @@
   * @}
   */   
 #endif /* STM32F410xx || STM32F446xx  */
-    
+
 /**
   * @}
   */ 
@@ -292,7 +292,7 @@ HAL_StatusTypeDef HAL_PWREx_EnterUnderDriveSTOPMode(uint32_t Regulator, uint8_t 
 /* --- CSR Register ---*/
 /* Alias word address of BRE bit */
 #define BRE_BIT_NUMBER   POSITION_VAL(PWR_CSR_BRE)
-#define CSR_BRE_BB      (uint32_t)(PERIPH_BB_BASE + (PWR_CSR_OFFSET_BB * 32) + (BRE_BIT_NUMBER * 4))    
+#define CSR_BRE_BB      (uint32_t)(PERIPH_BB_BASE + (PWR_CSR_OFFSET_BB * 32) + (BRE_BIT_NUMBER * 4))
 
 #if defined(STM32F469xx) || defined(STM32F479xx)
 /* Alias word address of WUPP bit */

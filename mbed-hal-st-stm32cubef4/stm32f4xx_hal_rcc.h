@@ -943,8 +943,8 @@ typedef struct
 #define __HAL_RCC_PLL_PLLM_CONFIG(__PLLM__) MODIFY_REG(RCC->PLLCFGR, RCC_PLLCFGR_PLLM, (__PLLM__))
 /**
   * @}
-  */
-
+  */                                                     
+                                                     
 /** @defgroup RCC_Get_Clock_source Get Clock source
   * @{   
   */

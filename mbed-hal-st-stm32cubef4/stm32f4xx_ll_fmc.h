@@ -1167,7 +1167,7 @@ typedef struct
 
 #if defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx)											 
 #define IS_FMC_WRAP_MODE(__MODE__) (((__MODE__) == FMC_WRAP_MODE_DISABLE) || \
-                                     ((__MODE__) == FMC_WRAP_MODE_ENABLE))
+                                    ((__MODE__) == FMC_WRAP_MODE_ENABLE))
 #endif /* STM32F427xx || STM32F437xx || STM32F429xx || STM32F439xx */								 
 
 #define IS_FMC_WAIT_SIGNAL_ACTIVE(__ACTIVE__) (((__ACTIVE__) == FMC_WAIT_TIMING_BEFORE_WS) || \

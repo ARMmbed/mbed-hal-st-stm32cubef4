@@ -266,7 +266,7 @@ static void HASHEx_DMAXferCplt(DMA_HandleTypeDef *hdma)
       }
       /* Configure the number of valid bits in last word of the message */
       MODIFY_REG(HASH->STR, HASH_STR_NBLW, 8 * (buffersize % 4));
-      
+            
       /* Set the HASH DMA transfer complete */
       hhash->hdmain->XferCpltCallback = HASHEx_DMAXferCplt;
       
@@ -1044,10 +1044,9 @@ HAL_StatusTypeDef HAL_HASHEx_SHA224_Start_IT(HASH_HandleTypeDef *hhash, uint8_t 
       __HAL_HASH_START_DIGEST();
       /* Reset buffer counter */
       hhash->HashInCount = 0;
+      /* Call Input data transfer complete callback */
+      HAL_HASH_InCpltCallback(hhash);
     }
-    /* Call Input data transfer complete callback */
-    HAL_HASH_InCpltCallback(hhash);
-  }
   }
   
   /* Process Unlocked */
@@ -1145,7 +1144,7 @@ HAL_StatusTypeDef HAL_HASHEx_SHA256_Start_IT(HASH_HandleTypeDef *hhash, uint8_t 
       if(hhash->HashITCounter == 0)
       {
         HASH->DIN = *(uint32_t*)inputaddr;
-        
+
         if(hhash->HashInCount >= 68)
         {
           /* Decrement buffer counter */
@@ -1196,10 +1195,9 @@ HAL_StatusTypeDef HAL_HASHEx_SHA256_Start_IT(HASH_HandleTypeDef *hhash, uint8_t 
       __HAL_HASH_START_DIGEST();
       /* Reset buffer counter */
       hhash->HashInCount = 0;
+      /* Call Input data transfer complete callback */
+      HAL_HASH_InCpltCallback(hhash);
     }
-    /* Call Input data transfer complete callback */
-    HAL_HASH_InCpltCallback(hhash);
-  }
   }
   
   /* Process Unlocked */

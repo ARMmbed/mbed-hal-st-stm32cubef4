@@ -144,7 +144,7 @@ typedef struct
 /**
   * @}
   */
-
+  
 /** @defgroup PCD_Turnaround_Timeout Turnaround Timeout Value
   * @{
   */
@@ -228,7 +228,7 @@ typedef struct
                                                                    EXTI->RTSR |= USB_OTG_FS_WAKEUP_EXTI_LINE;\
                                                                    EXTI->FTSR |= USB_OTG_FS_WAKEUP_EXTI_LINE 
                                                          
-#define __HAL_USB_OTG_FS_WAKEUP_EXTI_GENERATE_SWIT()  (EXTI->SWIER |= USB_OTG_FS_WAKEUP_EXTI_LINE) 
+#define __HAL_USB_OTG_FS_WAKEUP_EXTI_GENERATE_SWIT()  (EXTI->SWIER |= USB_OTG_FS_WAKEUP_EXTI_LINE)
 /**
   * @}
   */ 
@@ -307,8 +307,8 @@ PCD_StateTypeDef HAL_PCD_GetState(PCD_HandleTypeDef *hpcd);
 
 /**
   * @}
-  */ 
-
+  */
+ 
 /* Private macros ------------------------------------------------------------*/
 /** @defgroup PCD_Private_Macros PCD Private Macros
  * @{
@@ -320,7 +320,7 @@ PCD_StateTypeDef HAL_PCD_GetState(PCD_HandleTypeDef *hpcd);
     defined(STM32F429xx) || defined(STM32F439xx) || defined(STM32F446xx) || defined(STM32F469xx) || defined(STM32F479xx)
  #define IS_PCD_ALL_INSTANCE(INSTANCE) (((INSTANCE) == USB_OTG_FS) || \
                                         ((INSTANCE) == USB_OTG_HS))
-#elif defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F411xE)
+#elif defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F411xE) 
  #define IS_PCD_ALL_INSTANCE(INSTANCE) (((INSTANCE) == USB_OTG_FS))
 #endif
 /**

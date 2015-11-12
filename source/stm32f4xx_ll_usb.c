@@ -62,7 +62,7 @@
   * @{
   */
 
-#if defined (HAL_PCD_MODULE_ENABLED) || defined (HAL_HCD_MODULE_ENABLED)
+#if defined(HAL_PCD_MODULE_ENABLED) || defined(HAL_HCD_MODULE_ENABLED)
 #if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx) || \
     defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) || \
     defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F411xE) || defined(STM32F446xx) || \
@@ -255,7 +255,7 @@ HAL_StatusTypeDef USB_DevInit (USB_OTG_GlobalTypeDef *USBx, USB_OTG_CfgTypeDef c
   /* Flush the FIFOs */
   USB_FlushTxFifo(USBx , 0x10); /* all Tx FIFOs */
   USB_FlushRxFifo(USBx);
-
+  
   /* Clear all pending Device Interrupts */
   USBx_DEVICE->DIEPMSK = 0;
   USBx_DEVICE->DOEPMSK = 0;
@@ -1178,7 +1178,7 @@ HAL_StatusTypeDef USB_HostInit (USB_OTG_GlobalTypeDef *USBx, USB_OTG_CfgTypeDef 
   
   /* Clear any pending interrupts */
   USBx->GINTSTS = 0xFFFFFFFF;
-
+  
   if(USBx == USB_OTG_FS)
   {
     /* set Rx FIFO size */
@@ -1446,7 +1446,7 @@ HAL_StatusTypeDef USB_HC_StartXfer(USB_OTG_GlobalTypeDef *USBx, USB_OTG_HCTypeDe
   uint16_t num_packets = 0;
   uint16_t max_hc_pkt_count = 256;
   uint32_t tmpreg = 0;
-  
+    
   if((USBx != USB_OTG_FS) && (hc->speed == USB_OTG_SPEED_HIGH))
   {
     if((dma == 0) && (hc->do_ping == 1))
@@ -1671,7 +1671,7 @@ HAL_StatusTypeDef USB_StopHost(USB_OTG_GlobalTypeDef *USBx)
   
   /* Halt all channels to put them into a known state. */  
   for (i = 0; i <= 15; i++)
-  {   
+  {
     value = USBx_HC(i)->HCCHAR ;
     
     value |= USB_OTG_HCCHAR_CHDIS;
@@ -1700,7 +1700,7 @@ HAL_StatusTypeDef USB_StopHost(USB_OTG_GlobalTypeDef *USBx)
   */
 #endif /* STM32F405xx || STM32F415xx || STM32F407xx || STM32F417xx || STM32F427xx || STM32F437xx || STM32F429xx || STM32F439xx ||
           STM32F401xC || STM32F401xE || STM32F411xE || STM32F446xx || STM32F469xx || STM32F479xx  */
-#endif /* defined (HAL_PCD_MODULE_ENABLED) || defined (HAL_HCD_MODULE_ENABLED) */
+#endif /* defined(HAL_PCD_MODULE_ENABLED) || defined(HAL_HCD_MODULE_ENABLED) */
 
 /**
   * @}

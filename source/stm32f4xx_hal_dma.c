@@ -188,9 +188,9 @@ static uint32_t DMA_CalcBaseAndBitshift(DMA_HandleTypeDef *hdma);
   * @retval HAL status
   */
 HAL_StatusTypeDef HAL_DMA_Init(DMA_HandleTypeDef *hdma)
-{ 
+{
   uint32_t tmp = 0;
-  
+
   /* Check the DMA peripheral state */
   if(hdma == NULL)
   {
@@ -313,13 +313,13 @@ HAL_StatusTypeDef HAL_DMA_DeInit(DMA_HandleTypeDef *hdma)
 
   /* Reset DMA Streamx memory 0 address register */
   hdma->Instance->M0AR = 0;
-
+  
   /* Reset DMA Streamx memory 1 address register */
   hdma->Instance->M1AR = 0;
-
+  
   /* Reset DMA Streamx FIFO control register */
   hdma->Instance->FCR  = (uint32_t)0x00000021;
-
+  
   /* Get DMA steam Base Address */  
   regs = (DMA_Base_Registers *)DMA_CalcBaseAndBitshift(hdma);
   
@@ -488,7 +488,7 @@ HAL_StatusTypeDef HAL_DMA_Abort(DMA_HandleTypeDef *hdma)
 HAL_StatusTypeDef HAL_DMA_PollForTransfer(DMA_HandleTypeDef *hdma, uint32_t CompleteLevel, uint32_t Timeout)
 {
   uint32_t temp, tmp, tmp1, tmp2;
-  uint32_t tickstart = 0; 
+  uint32_t tickstart = 0;
 
   /* calculate DMA base and stream number */
   DMA_Base_Registers *regs;
@@ -529,7 +529,7 @@ HAL_StatusTypeDef HAL_DMA_PollForTransfer(DMA_HandleTypeDef *hdma, uint32_t Comp
       {
         /* Update error code */
         hdma->ErrorCode |= HAL_DMA_ERROR_FE;
- 
+
         /* Clear the FIFO error flag */
         regs->IFCR = DMA_FLAG_FEIF0_4 << hdma->StreamIndex;
       }
@@ -543,12 +543,12 @@ HAL_StatusTypeDef HAL_DMA_PollForTransfer(DMA_HandleTypeDef *hdma, uint32_t Comp
       }
       /* Change the DMA state */
       hdma->State= HAL_DMA_STATE_ERROR;
-      
+
       /* Process Unlocked */
       __HAL_UNLOCK(hdma);
 
       return HAL_ERROR;
-    }  
+    }
     /* Check for the Timeout */
     if(Timeout != HAL_MAX_DELAY)
     {
@@ -562,7 +562,7 @@ HAL_StatusTypeDef HAL_DMA_PollForTransfer(DMA_HandleTypeDef *hdma, uint32_t Comp
 
         /* Process Unlocked */
         __HAL_UNLOCK(hdma);
-        
+
         return HAL_TIMEOUT;
       }
     }
@@ -599,7 +599,7 @@ HAL_StatusTypeDef HAL_DMA_PollForTransfer(DMA_HandleTypeDef *hdma, uint32_t Comp
     __HAL_UNLOCK(hdma);
   }
   else
-  { 
+  {
     /* Clear the half transfer complete flag */
     regs->IFCR = DMA_FLAG_HTIF0_4 << hdma->StreamIndex;
 
@@ -659,7 +659,7 @@ void HAL_DMA_IRQHandler(DMA_HandleTypeDef *hdma)
       hdma->State = HAL_DMA_STATE_ERROR;
 
       /* Process Unlocked */
-      __HAL_UNLOCK(hdma); 
+      __HAL_UNLOCK(hdma);
 
       if(hdma->XferErrorCallback != NULL)
       {
@@ -726,7 +726,7 @@ void HAL_DMA_IRQHandler(DMA_HandleTypeDef *hdma)
   if ((regs->ISR & (DMA_FLAG_HTIF0_4 << hdma->StreamIndex)) != RESET)
   {
     if(__HAL_DMA_GET_IT_SOURCE(hdma, DMA_IT_HT) != RESET)
-    { 
+    {
       /* Multi_Buffering mode enabled */
       if(((hdma->Instance->CR) & (uint32_t)(DMA_SxCR_DBM)) != 0)
       {
@@ -788,7 +788,7 @@ void HAL_DMA_IRQHandler(DMA_HandleTypeDef *hdma)
           }
         }
         /* Current memory buffer used is Memory 0 */
-        else if((hdma->Instance->CR & DMA_SxCR_CT) != 0) 
+        else if((hdma->Instance->CR & DMA_SxCR_CT) != 0)
         {
           if(hdma->XferCpltCallback != NULL)
           {
@@ -815,7 +815,7 @@ void HAL_DMA_IRQHandler(DMA_HandleTypeDef *hdma)
         hdma->State = HAL_DMA_STATE_READY_MEM0;
 
         /* Process Unlocked */
-        __HAL_UNLOCK(hdma);      
+        __HAL_UNLOCK(hdma);
 
         if(hdma->XferCpltCallback != NULL)
         {

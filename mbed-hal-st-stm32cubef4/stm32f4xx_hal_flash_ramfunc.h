@@ -53,7 +53,7 @@
 
 /** @addtogroup FLASHRAMFUNC
   * @{
-  */ 
+  */
 
 /* Exported types ------------------------------------------------------------*/   
 /* Exported macro ------------------------------------------------------------*/
@@ -84,7 +84,7 @@ __RAM_FUNC HAL_FLASHEx_DisableFlashSleepMode(void);
 /**
   * @}
   */
-  
+
 #endif /* STM32F410xx || STM32F411xE || STM32F446xx  */  
 #ifdef __cplusplus
 }

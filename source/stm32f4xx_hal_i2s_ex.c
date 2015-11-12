@@ -1465,10 +1465,10 @@ uint32_t I2S_GetInputClock(I2S_HandleTypeDef *hi2s)
 /**
   * @}
   */
-
+  
 /**
   * @}
-  */
+  */  
   
 #endif /* HAL_I2S_MODULE_ENABLED */
 /**

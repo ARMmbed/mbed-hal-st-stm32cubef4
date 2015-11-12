@@ -241,7 +241,8 @@ typedef struct
   *            @arg HASH_FLAG_DINNE: DIN not empty : The input buffer contains at least one word of data
   * @retval The new state of __FLAG__ (TRUE or FALSE).
   */
-#define __HAL_HASH_GET_FLAG(__FLAG__) ((HASH->SR & (__FLAG__)) == (__FLAG__))
+#define __HAL_HASH_GET_FLAG(__FLAG__) (((__FLAG__) > 8U) ? ((HASH->CR & (__FLAG__)) == (__FLAG__)) :\
+                                                           ((HASH->SR & (__FLAG__)) == (__FLAG__)))
 
 /**
   * @brief  Enable the multiple DMA mode. 

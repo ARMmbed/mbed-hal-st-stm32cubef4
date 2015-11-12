@@ -2113,14 +2113,14 @@ static void SPI_DMAEndTransmitReceive(SPI_HandleTypeDef *hspi)
   *                the configuration information for the specified DMA module.
   * @retval None
   */
-static void SPI_DMATransmitReceiveCplt(DMA_HandleTypeDef *hdma)   
+static void SPI_DMATransmitReceiveCplt(DMA_HandleTypeDef *hdma)
 {
   SPI_HandleTypeDef* hspi = ( SPI_HandleTypeDef* )((DMA_HandleTypeDef* )hdma)->Parent;
   if((hdma->Instance->CR & DMA_SxCR_CIRC) == 0)
   { /**/
     SPI_DMAEndTransmitReceive(hspi);
     
-    hspi->State = HAL_SPI_STATE_READY;    
+    hspi->State = HAL_SPI_STATE_READY;
     
     /* Check if Errors has been detected during transfer */
     if(hspi->ErrorCode != HAL_SPI_ERROR_NONE)

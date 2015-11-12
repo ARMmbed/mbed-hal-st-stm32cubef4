@@ -484,11 +484,11 @@ HAL_StatusTypeDef HAL_I2S_Transmit(I2S_HandleTypeDef *hi2s, uint16_t *pData, uin
     /* Check if Slave mode is selected */
     if(((hi2s->Instance->I2SCFGR & SPI_I2SCFGR_I2SCFG) == I2S_MODE_SLAVE_TX) || ((hi2s->Instance->I2SCFGR & SPI_I2SCFGR_I2SCFG) == I2S_MODE_SLAVE_RX))
     {
-    /* Wait until Busy flag is reset */
-    if (I2S_WaitFlagStateUntilTimeout(hi2s, I2S_FLAG_BSY, SET, Timeout) != HAL_OK)
-    {
-      return HAL_TIMEOUT;
-    }
+      /* Wait until Busy flag is reset */
+      if (I2S_WaitFlagStateUntilTimeout(hi2s, I2S_FLAG_BSY, SET, Timeout) != HAL_OK)
+      {
+        return HAL_TIMEOUT;
+      }
     }
     hi2s->State = HAL_I2S_STATE_READY; 
     

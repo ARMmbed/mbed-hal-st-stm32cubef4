@@ -20,7 +20,7 @@
     [..]        
       *** DAC Channels ***
       ====================  
-    [..]  
+    [..]
     The device integrates two 12-bit Digital Analog Converters that can 
     be used independently or simultaneously (dual mode):
       (#) DAC channel1 with DAC_OUT1 (PA4) as output

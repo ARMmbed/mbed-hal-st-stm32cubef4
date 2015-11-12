@@ -138,7 +138,7 @@ static HAL_StatusTypeDef  FLASH_OB_DisablePCROP(uint32_t Sector);
 #if defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx)|| defined(STM32F439xx) || defined(STM32F469xx) || defined(STM32F479xx) 
 static HAL_StatusTypeDef FLASH_OB_EnablePCROP(uint32_t SectorBank1, uint32_t SectorBank2, uint32_t Banks);
 static HAL_StatusTypeDef FLASH_OB_DisablePCROP(uint32_t SectorBank1, uint32_t SectorBank2, uint32_t Banks);
-static HAL_StatusTypeDef  FLASH_OB_BootConfig(uint8_t BootConfig);
+static HAL_StatusTypeDef FLASH_OB_BootConfig(uint8_t BootConfig);
 #endif /* STM32F427xx || STM32F437xx || STM32F429xx || STM32F439xx || STM32F469xx || STM32F479xx */
 
 extern HAL_StatusTypeDef         FLASH_WaitForLastOperation(uint32_t Timeout);
@@ -405,7 +405,7 @@ void HAL_FLASHEx_OBGetConfig(FLASH_OBProgramInitTypeDef *pOBInit)
   pOBInit->BORLevel = (uint32_t)FLASH_OB_GetBOR();
 }
 
-#if defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx)|| defined(STM32F439xx) ||\
+#if defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) ||\
     defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F410Tx) || defined(STM32F410Cx) ||\
     defined(STM32F410Rx) || defined(STM32F411xE) || defined(STM32F446xx) || defined(STM32F469xx) ||\
     defined(STM32F479xx) 
@@ -671,7 +671,7 @@ void FLASH_Erase_Sector(uint32_t Sector, uint8_t VoltageRange)
   * 
   * @param  WRPSector: specifies the sector(s) to be write protected.
   *          This parameter can be one of the following values:
-  *            @arg WRPSector: A value between OB_WRP_SECTOR_0 and OB_WRP_SECTOR_23                      
+  *            @arg WRPSector: A value between OB_WRP_SECTOR_0 and OB_WRP_SECTOR_23
   *            @arg OB_WRP_SECTOR_All
   * @note   BANK2 starts from OB_WRP_SECTOR_12
   *
@@ -742,7 +742,7 @@ static HAL_StatusTypeDef FLASH_OB_EnableWRP(uint32_t WRPSector, uint32_t Banks)
   * 
   * @param  WRPSector: specifies the sector(s) to be write protected.
   *          This parameter can be one of the following values:
-  *            @arg WRPSector: A value between OB_WRP_SECTOR_0 and OB_WRP_SECTOR_23                      
+  *            @arg WRPSector: A value between OB_WRP_SECTOR_0 and OB_WRP_SECTOR_23
   *            @arg OB_WRP_Sector_All
   * @note   BANK2 starts from OB_WRP_SECTOR_12
   *
@@ -966,7 +966,7 @@ static HAL_StatusTypeDef FLASH_OB_DisablePCROP(uint32_t SectorBank1, uint32_t Se
 
 #endif /* STM32F427xx || STM32F437xx || STM32F429xx || STM32F439xx || STM32F469xx || STM32F479xx */
 
-#if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx)|| defined(STM32F417xx) ||\
+#if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx) ||\
     defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F410Tx) || defined(STM32F410Cx) ||\
     defined(STM32F410Rx) || defined(STM32F411xE) || defined(STM32F446xx) 
 /**
@@ -995,12 +995,12 @@ static void FLASH_MassErase(uint8_t VoltageRange, uint32_t Banks)
   /* Check the parameters */
   assert_param(IS_VOLTAGERANGE(VoltageRange));
   assert_param(IS_FLASH_BANK(Banks));
-
+  
   /* If the previous operation is completed, proceed to erase all sectors */
   CLEAR_BIT(FLASH->CR, FLASH_CR_PSIZE);
-   FLASH->CR |= tmp_psize;
-   FLASH->CR |= FLASH_CR_MER;
-   FLASH->CR |= FLASH_CR_STRT;
+  FLASH->CR |= tmp_psize;
+  FLASH->CR |= FLASH_CR_MER;
+  FLASH->CR |= FLASH_CR_STRT;
 }
 
 /**
@@ -1183,7 +1183,7 @@ static HAL_StatusTypeDef FLASH_OB_DisablePCROP(uint32_t Sector)
   return status;
 
 }
-#endif /* STM32F401xC || STM32F401xE || STM32F411xE || STM32F446xx */
+#endif /* STM32F401xC || STM32F401xE || STM32F411xE || STM32F446xx  */
 
 /**
   * @brief  Set the read protection level.
@@ -1324,7 +1324,7 @@ static uint8_t FLASH_OB_GetRDP(void)
   {
     readstatus = OB_RDP_LEVEL_0;
   }
-  
+
   return readstatus;
 }
 

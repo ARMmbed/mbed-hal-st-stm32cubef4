@@ -744,7 +744,7 @@ HAL_StatusTypeDef HAL_RTCEx_SetWakeUpTimer(RTC_HandleTypeDef *hrtc, uint32_t Wak
   
   /* Disable the write protection for RTC registers */
   __HAL_RTC_WRITEPROTECTION_DISABLE(hrtc);
-  
+
   /*Check RTC WUTWF flag is reset only when wake up timer enabled*/
   if((hrtc->Instance->CR & RTC_CR_WUTE) != RESET)
   {
@@ -779,14 +779,14 @@ HAL_StatusTypeDef HAL_RTCEx_SetWakeUpTimer(RTC_HandleTypeDef *hrtc, uint32_t Wak
     {
       /* Enable the write protection for RTC registers */
       __HAL_RTC_WRITEPROTECTION_ENABLE(hrtc);
-      
-      hrtc->State = HAL_RTC_STATE_TIMEOUT; 
-      
+
+      hrtc->State = HAL_RTC_STATE_TIMEOUT;
+
       /* Process Unlocked */ 
       __HAL_UNLOCK(hrtc);
-      
+
       return HAL_TIMEOUT;
-    }  
+    }
   }
   
   /* Clear the Wake-up Timer clock source bits in CR register */
@@ -835,7 +835,7 @@ HAL_StatusTypeDef HAL_RTCEx_SetWakeUpTimer_IT(RTC_HandleTypeDef *hrtc, uint32_t 
   
   /* Disable the write protection for RTC registers */
   __HAL_RTC_WRITEPROTECTION_DISABLE(hrtc);
-  
+
   /*Check RTC WUTWF flag is reset only when wake up timer enabled*/
   if((hrtc->Instance->CR & RTC_CR_WUTE) != RESET)
   {
@@ -870,14 +870,14 @@ HAL_StatusTypeDef HAL_RTCEx_SetWakeUpTimer_IT(RTC_HandleTypeDef *hrtc, uint32_t 
     {
       /* Enable the write protection for RTC registers */
       __HAL_RTC_WRITEPROTECTION_ENABLE(hrtc);
-      
+
       hrtc->State = HAL_RTC_STATE_TIMEOUT; 
-      
+
       /* Process Unlocked */ 
       __HAL_UNLOCK(hrtc);
-      
+
       return HAL_TIMEOUT;
-    }  
+    }
   }
   
   /* Configure the Wake-up Timer counter */

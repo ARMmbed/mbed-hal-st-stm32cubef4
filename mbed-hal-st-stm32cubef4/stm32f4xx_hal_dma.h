@@ -165,7 +165,7 @@ typedef struct __DMA_HandleTypeDef
 
   void                       (* XferErrorCallback)( struct __DMA_HandleTypeDef * hdma);    /*!< DMA transfer error callback            */
 
- __IO uint32_t              ErrorCode;                                                    /*!< DMA Error code                          */
+ __IO uint32_t               ErrorCode;                                                    /*!< DMA Error code                         */
 
  uint32_t                    StreamBaseAddress;                                            /*!< DMA Stream Base Address                */
 

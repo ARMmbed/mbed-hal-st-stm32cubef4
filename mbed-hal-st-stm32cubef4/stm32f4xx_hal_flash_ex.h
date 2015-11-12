@@ -111,7 +111,7 @@ typedef struct
 /**
   * @brief  FLASH Advanced Option Bytes Program structure definition
   */
-#if defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) || \
+#if defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) ||\
     defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F410Tx) || defined(STM32F410Cx) ||\
     defined(STM32F410Rx) || defined(STM32F411xE) || defined(STM32F446xx) || defined(STM32F469xx) ||\
     defined(STM32F479xx) 
@@ -200,7 +200,7 @@ typedef struct
 #define OB_RDP_LEVEL_0   ((uint8_t)0xAA)
 #define OB_RDP_LEVEL_1   ((uint8_t)0x55)
 #define OB_RDP_LEVEL_2   ((uint8_t)0xCC) /*!< Warning: When enabling read protection level 2 
-                                                  it s no more possible to go back to level 1 or 0 */
+                                              it s no more possible to go back to level 1 or 0 */
 /**
   * @}
   */ 
@@ -302,7 +302,7 @@ typedef struct
 /*--------------------------------------------------------------------------------------------------------------*/
 
 /*-------------------------- STM32F40xxx/STM32F41xxx/STM32F401xx/STM32F411xx -----------------------------------*/ 
-#if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx) || \
+#if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx) ||\
     defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F410Tx) || defined(STM32F410Cx) ||\
     defined(STM32F410Rx) || defined(STM32F411xE) || defined(STM32F446xx) 
      
@@ -392,7 +392,7 @@ typedef struct
 /*-----------------------------------------------------------------------------------------------------*/  
 
 /*--------------------------------------- STM32F40xxx/STM32F41xxx -------------------------------------*/ 
-#if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx)
+#if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx) 
 #define FLASH_SECTOR_0     ((uint32_t)0)  /*!< Sector Number 0   */
 #define FLASH_SECTOR_1     ((uint32_t)1)  /*!< Sector Number 1   */
 #define FLASH_SECTOR_2     ((uint32_t)2)  /*!< Sector Number 2   */
@@ -405,7 +405,7 @@ typedef struct
 #define FLASH_SECTOR_9     ((uint32_t)9)  /*!< Sector Number 9   */
 #define FLASH_SECTOR_10    ((uint32_t)10) /*!< Sector Number 10  */
 #define FLASH_SECTOR_11    ((uint32_t)11) /*!< Sector Number 11  */
-#endif /* STM32F405xx || STM32F415xx || STM32F407xx || STM32F417xx */
+#endif /* STM32F405xx || STM32F415xx || STM32F407xx || STM32F417xx  */
 /*-----------------------------------------------------------------------------------------------------*/
 
 /*--------------------------------------------- STM32F401xC -------------------------------------------*/ 
@@ -430,7 +430,7 @@ typedef struct
 /*-----------------------------------------------------------------------------------------------------*/
 
 /*---------------------------------- STM32F401xE/STM32F411xE/STM32F446xx ------------------------------*/
-#if defined(STM32F401xE) || defined(STM32F411xE) ||  defined(STM32F446xx)
+#if defined(STM32F401xE) || defined(STM32F411xE) || defined(STM32F446xx)
 #define FLASH_SECTOR_0     ((uint32_t)0) /*!< Sector Number 0   */
 #define FLASH_SECTOR_1     ((uint32_t)1) /*!< Sector Number 1   */
 #define FLASH_SECTOR_2     ((uint32_t)2) /*!< Sector Number 2   */
@@ -481,7 +481,7 @@ typedef struct
 /*-----------------------------------------------------------------------------------------------------*/
 
 /*--------------------------------------- STM32F40xxx/STM32F41xxx -------------------------------------*/ 
-#if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx)
+#if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx) 
 #define OB_WRP_SECTOR_0       ((uint32_t)0x00000001) /*!< Write protection of Sector0     */
 #define OB_WRP_SECTOR_1       ((uint32_t)0x00000002) /*!< Write protection of Sector1     */
 #define OB_WRP_SECTOR_2       ((uint32_t)0x00000004) /*!< Write protection of Sector2     */
@@ -495,7 +495,7 @@ typedef struct
 #define OB_WRP_SECTOR_10      ((uint32_t)0x00000400) /*!< Write protection of Sector10    */
 #define OB_WRP_SECTOR_11      ((uint32_t)0x00000800) /*!< Write protection of Sector11    */
 #define OB_WRP_SECTOR_All     ((uint32_t)0x00000FFF) /*!< Write protection of all Sectors */
-#endif /* STM32F405xx || STM32F415xx || STM32F407xx || STM32F417xx */
+#endif /* STM32F405xx || STM32F415xx || STM32F407xx || STM32F417xx  */
 /*-----------------------------------------------------------------------------------------------------*/
 
 /*--------------------------------------------- STM32F401xC -------------------------------------------*/
@@ -509,7 +509,7 @@ typedef struct
 #define OB_WRP_SECTOR_All     ((uint32_t)0x00000FFF) /*!< Write protection of all Sectors */
 #endif /* STM32F401xC */
 /*-----------------------------------------------------------------------------------------------------*/
-
+ 
 /*--------------------------------------------- STM32F410xx -------------------------------------------*/
 #if defined(STM32F410Tx) || defined(STM32F410Cx) || defined(STM32F410Rx)
 #define OB_WRP_SECTOR_0       ((uint32_t)0x00000001) /*!< Write protection of Sector0     */
@@ -596,7 +596,7 @@ typedef struct
 /*-----------------------------------------------------------------------------------------------------*/
 
 /*------------------------------ STM32F401xE/STM32F411xE/STM32F446xx ----------------------*/
-#if defined(STM32F401xE) || defined(STM32F411xE) || defined(STM32F446xx)
+#if defined(STM32F401xE) || defined(STM32F411xE) || defined(STM32F446xx) 
 #define OB_PCROP_SECTOR_0        ((uint32_t)0x00000001) /*!< PC Read/Write protection of Sector0      */
 #define OB_PCROP_SECTOR_1        ((uint32_t)0x00000002) /*!< PC Read/Write protection of Sector1      */
 #define OB_PCROP_SECTOR_2        ((uint32_t)0x00000004) /*!< PC Read/Write protection of Sector2      */
@@ -606,7 +606,7 @@ typedef struct
 #define OB_PCROP_SECTOR_6        ((uint32_t)0x00000040) /*!< PC Read/Write protection of Sector6      */
 #define OB_PCROP_SECTOR_7        ((uint32_t)0x00000080) /*!< PC Read/Write protection of Sector7      */
 #define OB_PCROP_SECTOR_All      ((uint32_t)0x00000FFF) /*!< PC Read/Write protection of all Sectors  */
-#endif /* STM32F401xE || STM32F411xE || STM32F446xx */
+#endif /* STM32F401xE || STM32F411xE || STM32F446xx  */
 /*-----------------------------------------------------------------------------------------------------*/
 
 /**
@@ -694,9 +694,9 @@ uint16_t          HAL_FLASHEx_OB_GetBank2WRP(void);
 #endif /* STM32F427xx || STM32F437xx || STM32F429xx || STM32F439xx || STM32F469xx || STM32F479xx */
 
 /*--------------------------------------- STM32F40xxx/STM32F41xxx -------------------------------------*/ 
-#if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx)
+#if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx) 
 #define FLASH_SECTOR_TOTAL  12
-#endif /* STM32F405xx || STM32F415xx || STM32F407xx || STM32F417xx */
+#endif /* STM32F405xx || STM32F415xx || STM32F407xx || STM32F417xx  */
 
 /*--------------------------------------------- STM32F401xC -------------------------------------------*/ 
 #if defined(STM32F401xC)
@@ -746,7 +746,7 @@ uint16_t          HAL_FLASHEx_OB_GetBank2WRP(void);
 
 #define IS_OPTIONBYTE(VALUE)(((VALUE) <= (OPTIONBYTE_WRP|OPTIONBYTE_RDP|OPTIONBYTE_USER|OPTIONBYTE_BOR)))
 
-#define IS_OB_RDP_LEVEL(LEVEL) (((LEVEL) == OB_RDP_LEVEL_0)   ||\
+#define IS_OB_RDP_LEVEL(LEVEL) (((LEVEL) == OB_RDP_LEVEL_0) ||\
                                 ((LEVEL) == OB_RDP_LEVEL_1) ||\
                                 ((LEVEL) == OB_RDP_LEVEL_2))
 
@@ -799,7 +799,7 @@ uint16_t          HAL_FLASHEx_OB_GetBank2WRP(void);
                                    ((LATENCY) == FLASH_LATENCY_15))
 #endif /* STM32F427xx || STM32F437xx || STM32F429xx || STM32F439xx || STM32F469xx || STM32F479xx */
 
-#if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx) || \
+#if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx) ||\
     defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F410Tx) || defined(STM32F410Cx) ||\
     defined(STM32F410Rx) || defined(STM32F411xE) || defined(STM32F446xx) 
 #define IS_FLASH_LATENCY(LATENCY) (((LATENCY) == FLASH_LATENCY_0)  || \
@@ -840,14 +840,14 @@ uint16_t          HAL_FLASHEx_OB_GetBank2WRP(void);
                                   ((SECTOR) == FLASH_SECTOR_22)  || ((SECTOR) == FLASH_SECTOR_23))
 #endif /* STM32F427xx || STM32F437xx || STM32F429xx || STM32F439xx || STM32F469xx || STM32F479xx */
 
-#if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx)
+#if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx) 
 #define IS_FLASH_SECTOR(SECTOR) (((SECTOR) == FLASH_SECTOR_0)   || ((SECTOR) == FLASH_SECTOR_1)   ||\
                                  ((SECTOR) == FLASH_SECTOR_2)   || ((SECTOR) == FLASH_SECTOR_3)   ||\
                                  ((SECTOR) == FLASH_SECTOR_4)   || ((SECTOR) == FLASH_SECTOR_5)   ||\
                                  ((SECTOR) == FLASH_SECTOR_6)   || ((SECTOR) == FLASH_SECTOR_7)   ||\
                                  ((SECTOR) == FLASH_SECTOR_8)   || ((SECTOR) == FLASH_SECTOR_9)   ||\
                                  ((SECTOR) == FLASH_SECTOR_10)  || ((SECTOR) == FLASH_SECTOR_11))
-#endif /* STM32F405xx || STM32F415xx || STM32F407xx || STM32F417xx */
+#endif /* STM32F405xx || STM32F415xx || STM32F407xx || STM32F417xx  */
 
 #if defined(STM32F401xC)
 #define IS_FLASH_SECTOR(SECTOR) (((SECTOR) == FLASH_SECTOR_0)   || ((SECTOR) == FLASH_SECTOR_1)   ||\
@@ -887,9 +887,9 @@ uint16_t          HAL_FLASHEx_OB_GetBank2WRP(void);
 #define IS_OB_WRP_SECTOR(SECTOR)((((SECTOR) & (uint32_t)0xFFFFF000) == 0x00000000) && ((SECTOR) != 0x00000000))
 #endif /* STM32F410Tx || STM32F410Cx || STM32F410Rx */
 
-#if defined(STM32F401xE) || defined(STM32F411xE) || defined(STM32F446xx)
+#if defined(STM32F401xE) || defined(STM32F411xE) || defined(STM32F446xx) 
 #define IS_OB_WRP_SECTOR(SECTOR)((((SECTOR) & (uint32_t)0xFFFFF000) == 0x00000000) && ((SECTOR) != 0x00000000))
-#endif /* STM32F401xE || STM32F411xE || STM32F446xx */
+#endif /* STM32F401xE || STM32F411xE || STM32F446xx  */
    
 #if defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) || defined(STM32F469xx) || defined(STM32F479xx)
 #define IS_OB_PCROP(SECTOR)((((SECTOR) & (uint32_t)0xFFFFF000) == 0x00000000) && ((SECTOR) != 0x00000000))
@@ -903,9 +903,9 @@ uint16_t          HAL_FLASHEx_OB_GetBank2WRP(void);
 #define IS_OB_PCROP(SECTOR)((((SECTOR) & (uint32_t)0xFFFFF000) == 0x00000000) && ((SECTOR) != 0x00000000))
 #endif /* STM32F410Tx || STM32F410Cx || STM32F410Rx */
 
-#if defined(STM32F401xE) || defined(STM32F411xE) || defined(STM32F446xx)
+#if defined(STM32F401xE) || defined(STM32F411xE) || defined(STM32F446xx) 
 #define IS_OB_PCROP(SECTOR)((((SECTOR) & (uint32_t)0xFFFFF000) == 0x00000000) && ((SECTOR) != 0x00000000))
-#endif /* STM32F401xE || STM32F411xE || STM32F446xx */
+#endif /* STM32F401xE || STM32F411xE || STM32F446xx  */
 
 #if defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) ||\
     defined(STM32F469xx) || defined(STM32F479xx) 
