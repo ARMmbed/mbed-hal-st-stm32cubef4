@@ -950,6 +950,7 @@ HAL_StatusTypeDef HAL_I2C_Slave_Receive(I2C_HandleTypeDef *hi2c, uint8_t *pData,
     hi2c->Instance->CR1 &= ~I2C_CR1_ACK;
 
     hi2c->State = HAL_I2C_STATE_READY;
+<<<<<<< HEAD:source/stm32f4xx_hal_i2c__FIX.c
 
     /* Process Unlocked */
     __HAL_UNLOCK(hi2c);
@@ -1010,6 +1011,8 @@ HAL_StatusTypeDef HAL_I2C_Master_Check_IT(I2C_HandleTypeDef *hi2c, uint16_t DevA
 
     /* Clear ADDR flag */
     __HAL_I2C_CLEAR_ADDRFLAG(hi2c);
+=======
+>>>>>>> fdcb01ad9558201961b110c8d6e263a477bd3860:source/stm32f4xx_hal_i2c.c
 
     /* Process Unlocked */
     __HAL_UNLOCK(hi2c);
@@ -2883,12 +2886,15 @@ static HAL_StatusTypeDef I2C_MasterReceive_BTF(I2C_HandleTypeDef *hi2c)
     /* Disable EVT and ERR interrupt */
     __HAL_I2C_DISABLE_IT(hi2c, I2C_IT_EVT | I2C_IT_ERR);
 
+<<<<<<< HEAD:source/stm32f4xx_hal_i2c__FIX.c
 <<<<<<< 17e83fdac5ca228b0f283643ea5ff27b22c8798d:source/stm32f4xx_hal_i2c__FIX.c
     /* Disable Pos */
     hi2c->Instance->CR1 &= ~I2C_CR1_POS;
     
 =======
 >>>>>>> update of STM32CubeF4 to version 1.8:source/stm32f4xx_hal_i2c.c
+=======
+>>>>>>> fdcb01ad9558201961b110c8d6e263a477bd3860:source/stm32f4xx_hal_i2c.c
     if(hi2c->State == HAL_I2C_STATE_MEM_BUSY_RX)
     {
       hi2c->State = HAL_I2C_STATE_READY;

@@ -418,6 +418,7 @@ HAL_StatusTypeDef HAL_DMA_Start_IT(DMA_HandleTypeDef *hdma, uint32_t SrcAddress,
   /* Configure the source, destination address and the data length */
   DMA_SetConfig(hdma, SrcAddress, DstAddress, DataLength);
 
+<<<<<<< HEAD:source/stm32f4xx_hal_dma__FIX.c
 <<<<<<< 17e83fdac5ca228b0f283643ea5ff27b22c8798d:source/stm32f4xx_hal_dma__FIX.c
   /* Enable the transfer complete interrupt */
   __HAL_DMA_ENABLE_IT(hdma, DMA_IT_TC);
@@ -439,6 +440,11 @@ HAL_StatusTypeDef HAL_DMA_Start_IT(DMA_HandleTypeDef *hdma, uint32_t SrcAddress,
   hdma->Instance->CR  |= DMA_IT_TC | DMA_IT_HT | DMA_IT_TE | DMA_IT_DME;
   hdma->Instance->FCR |= DMA_IT_FE;
 >>>>>>> update of STM32CubeF4 to version 1.8:source/stm32f4xx_hal_dma.c
+=======
+  /* Enable all interrupts */
+  hdma->Instance->CR  |= DMA_IT_TC | DMA_IT_HT | DMA_IT_TE | DMA_IT_DME;
+  hdma->Instance->FCR |= DMA_IT_FE;
+>>>>>>> fdcb01ad9558201961b110c8d6e263a477bd3860:source/stm32f4xx_hal_dma.c
 
    /* Enable the Peripheral */
   __HAL_DMA_ENABLE(hdma);
