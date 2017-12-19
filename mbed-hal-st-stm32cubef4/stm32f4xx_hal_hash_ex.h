@@ -2,13 +2,13 @@
   ******************************************************************************
   * @file    stm32f4xx_hal_hash_ex.h
   * @author  MCD Application Team
-  * @version V1.3.0
-  * @date    09-March-2015
+  * @version V1.7.1
+  * @date    14-April-2017
   * @brief   Header file of HASH HAL Extension module.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT(c) 2017 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -43,7 +43,7 @@
  extern "C" {
 #endif
 
-#if defined(STM32F437xx) || defined(STM32F439xx)
+#if defined(STM32F437xx) || defined(STM32F439xx) || defined(STM32F479xx)
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal_def.h"
 
@@ -182,7 +182,7 @@ void HAL_HASHEx_IRQHandler(HASH_HandleTypeDef *hhash);
   * @}
   */
    
-#endif /* STM32F437xx || STM32F439xx */
+#endif /* STM32F437xx || STM32F439xx || STM32F479xx */
 /**
   * @}
   */ 
